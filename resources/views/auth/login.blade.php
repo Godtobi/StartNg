@@ -127,6 +127,16 @@
             </div>
         </div>
     </div>
+    @if (session('success'))
+        <div class=" text-center alert alert-success">
+            {!!  session('success') !!}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="text-center alert alert-warning">
+            {{ session('error') }}
+        </div>
+    @endif
 <form action="{{ route('login') }}" method="post">
     @csrf
     <div class="container pt-4 pb-5">
@@ -158,7 +168,7 @@
                 <input type="checkbox" name="remember" value="remember" id="check-me"> Remember me
             </div>
             <div class="col-md-3"></div>
-            <div class="col-md-4"><a href="#" class="forget-password">Forgot Password?</a> | <a href="{{route('register')}}">Sign Up</a> </div>
+            <div class="col-md-4"><a href="/reset-password" class="forget-password">Forgot Password?</a> | <a href="{{route('register')}}">Sign Up</a> </div>
 
         </div>
         <button type="submit" class="btn btn-success d-block mx-auto pl-5 pr-5 mb-4">Login</button>

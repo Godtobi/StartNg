@@ -134,7 +134,7 @@
 </head>
 
 <body>
-    @include('inc.navbar')
+    @include('../inc.navbar')
 
     <div class="container-fluid body-banner pt-5 pb-5">
         <div class="col-md-6 offset-md-2">
@@ -146,7 +146,7 @@
                 The HNG internship is a 3-month remote internship designed to <br> find and develop the most talented
                 software developers
             </p>
-            <a href="{{route('signup')}}" class="btn btn-success pl-5 pr-5 mb-4">Start Learning</a>
+            <a href="" class="btn btn-success pl-5 pr-5 mb-4">Start Learning</a>
         </div>
     </div>
 
@@ -276,7 +276,7 @@
     </div>
 
     <!-- Footer -->
-    @include('inc.footer')
+    @include('../inc.footer')
     <!-- End of Footer -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>

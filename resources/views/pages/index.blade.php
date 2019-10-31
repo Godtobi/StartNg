@@ -313,99 +313,108 @@
 </div>
 
 <div class="container mt-5">
-    <h4 class="text-center" style="color: #3A0842;">Explore Our Courses</h4>
-    <hr>
 
-    @php
-        $counter=3;
-    @endphp
 
-    @foreach($courses as $item)
-        @if($counter%3==0)
+    <section class="">
+        <div class="container pb-5">
+            <div class="mb-4 py-2 border-bottom text-center">
+                <h5 class="font-weight-bolder text-primary">Explore Our Courses</h5>
+            </div>
             <div class="row">
-                @endif
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top"
-                             src="https://res.cloudinary.com/sgnolebagabriel/image/upload/v1570927379/startng/Rectangle_44_w9fioh.png"
-                             alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title" style="font-weight: bold;">{{$item->name}}</h4>
-                            <p>{{$item->description}}</p>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked mb-3"></span> <br>
-                            @if(Auth::guest())
-                                <a href="#" class="btn btn-primary pr-3 pl-3 pt-1 pb-1"
-                                   style="background-color: #9A75A0; border: thin solid #9A75A0;">Register</a>
-                            @endif
-                            @if(!Auth::guest())
-                                <a href="{{route('register.courses',$item->id)}} class="btn btn-primary pr-3 pl-3 pt-1 pb-1"
-                                   style="background-color: #9A75A0; border: thin solid #9A75A0;">Register</a>
-                            @endif
-                            <a href="#" class="btn btn-primary pr-3 pl-3 pt-1 pb-1"
-                               style="background-color: #FFE797; border: thin solid #FFE797;">Details</a>
+                <!-- card -->
+
+                @foreach($courses as $item)
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow border-0">
+                            <img src="https://lancer-app.000webhostapp.com/startng/images/landing/backend-1.png" class="card-img-top img-fluid img-responsive" alt="Courses" role="img">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$item->name}}</h5>
+                                <p class="card-text text-muted mb-0">{{$item->description}}</p>
+                                <p class="text-warning pb-2 my-0">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="">
+                                        @if(Auth::guest())
+                                            <a href="{{route('index')}}" class="btn btn-sm btn-primary rounded-pill py-0 mr-1"
+                                               style="background-color: #9A75A0; border: thin solid #9A75A0;">Register</a>
+                                        @endif
+                                        @if(!Auth::guest())
+                                            <a href="{{route('register.courses',$item->id)}}" class="btn btn-sm btn-primary rounded-pill py-0 mr-1"
+                                               style="background-color: #9A75A0; border: thin solid #9A75A0;">Register</a>
+                                        @endif
+                                        <a href="{{route('course.details',$item->id)}}" class="btn btn-sm btn-warning rounded-pill py-0"
+                                           style="background-color: #FFE797; border: thin solid #FFE797;">Details</a>
+                                    </div>
+                                    <small class="text-muted">{{$item->duration}} Hrs video course</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+            @endforeach
 
-                @if($counter%3==0)
+            <!-- card -->
+
+                <!-- card -->
+
+                <!-- card -->
+
+
+                <!-- card -->
+
             </div>
-        @endif
-
-    @endforeach
+        </div>
+    </section>
 
  <!--  -->
-<section class="beginning-lesson">
-    <div class="row no-gutters">
-        <div class="col-md-6 bg-secondary">
-            <div class="container">
-                <div class="mb-4 pt-5 px-md-5 mx-md-5">
-                    <h5 class="text-white">The beginning of your career starts here. With us.</h5>
-                    <dl class="d-flex align-items-start text-white mb-0">
-                        <dt class="">-</dt>
-                        <dd class="ml-4 mb-0">
-                            <p class="d-inline">
+    <section class="beginning-lesson">
+        <div class="row no-gutters">
+            <div class="col-md-6 bg-secondary">
+                <div class="container">
+                    <div class="mb-4 pt-5 px-md-5 mx-md-5">
+                        <h5 class="text-white">The beginning of your career starts here. With us.</h5>
+                        <dl class="d-flex align-items-start text-white mb-0">
+                            <dt class="">-</dt>
+                            <dd class="ml-4 mb-0">
+                                <p class="d-inline">
                                 <div class="font-weight-bold mb-2">
                                     Intensive learning sessions
                                 </div>
                                 <span class="">The HNG internship is a 3-month remote internship designed ---to find and develop the most talented software developers.
-                                </span>
-                            </p>
-                        </dd>
-                    </dl>
-                    <dl class="d-flex align-items-start text-white pt-0">
-                        <dt class="">-</dt>
-                        <dd class="ml-4">
-                            <p class="d-inline">
+                                        </span>
+                                </p>
+                            </dd>
+                        </dl>
+                        <dl class="d-flex align-items-start text-white pt-0">
+                            <dt class="">-</dt>
+                            <dd class="ml-4">
+                                <p class="d-inline">
                                 <div class="font-weight-bold mb-2">
                                     Intensive learning sessions
                                 </div>
                                 <span class="">The HNG internship is a 3-month remote internship designed ---to find and develop the most talented software developers.
-                                </span>
-                            </p>
-                        </dd>
-                    </dl>
-                    <div class=""></div>
+                                        </span>
+                                </p>
+                            </dd>
+                        </dl>
+                        <div class=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 video-overlay">
+                <div class="container">
+                    <div class="text-center">
+                        <button class="btn btn-light btn-lg rounded-circle text-secondary pt-3">
+                            <i class="fas fa-play fa-2x"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-0 pt-0">
-            <div class="videoWrapper">
-                <iframe 
-                    width="100%" 
-                    height="380"
-                    src="https://www.youtube.com/embed/DYaq2sWTWAA" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </div>            
-</section>
+    </section>
 <!--  -->
 
 <!-- Take Your First Steps in Achieving Your Dreams -->

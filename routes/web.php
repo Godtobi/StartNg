@@ -18,6 +18,9 @@
 Auth::routes();
 
 Route::post('/forgotpass', 'ForgotPassController@index')->name('forgot.pass');
+Route::get('/reset-password', 'ForgotPassController@show');
+Route::get('/resetpassword/{mail}/{token}', 'ForgotPassController@showPasswordResetForm');
+Route::post('/reset', 'ForgotPassController@resetPassword')->name('reset');
 
 Route::get('/', 'BaseController@index')->name('index');
 Route::resource('admin', 'AdminController');
@@ -38,5 +41,9 @@ Route::get('/faq', 'BaseController@faq')->name('faq');
 Route::get('/find-course', 'BaseController@findcourse')->name('find-course');
 Route::get('/curriculum', 'BaseController@curriculum')->name('curriculum');
 
-Route::get('/mycourses/{id}', 'CourseController@mycourse')->name('mycourses');
+Route::get('/course/{id}', 'CourseController@course')->name('course.details');
+
+
+Route::get('/mycourses/{id}', 'CourseContentController@mycourse')->name('mycourses');
+
 Route::get('/register-course/{id}', 'CourseController@registerCourses')->name('register.courses');

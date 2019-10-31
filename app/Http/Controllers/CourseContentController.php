@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Courses;
 use App\CourseContent;
+use Illuminate\Support\Facades\DB;
 
 class CourseContentController extends Controller
 {
@@ -134,5 +135,42 @@ class CourseContentController extends Controller
         }
 
         return back()->with($key,$message);
+    }
+
+    public function mycourse($id){
+        $check=DB::table('users')->where('id',$id)->exists();
+
+        if($check) {
+            $check = DB::table('registered_courses')->where('user_id', $id)->exists();
+            if($check) {
+                $check = DB::table('registered_courses')->where('user_id', $id)->get();
+                $courses = [];
+                foreach ($check as $item) {
+
+                    $output = DB::table('courses')->where('id', $item->course_id)->get()[0];
+
+                    array_push($courses, (array)$output);
+                }
+                $message='';
+
+                return view('frontend.frontend.mycourses',compact('courses','message'));
+            }
+
+            else{
+                $message="no registered course";
+                $courses=[];
+                return view('course.mycourses',compact('courses','message'));
+
+            }
+
+
+        }
+        else{
+            $courses=[];
+            $message='user does not exist';
+            return view('course.mycourses',compact('courses','message'))->with('error',$message);
+
+        }
+
     }
 }

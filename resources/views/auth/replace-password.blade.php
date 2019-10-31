@@ -64,7 +64,7 @@
 <body>
 @include('../inc.navbar')
     <div class="container pt-4 pb-5">
-       <form method="post" action="{{route('forgot.pass')}}">
+       <form method="post" action="{{route('reset')}}">
            @csrf
            <div class="row">
                <div class="col">
@@ -75,12 +75,24 @@
                <div class="col-md-2"></div>
                <div class="col-md-8">
                    <div class="form-group">
-                       <label for="usr" style="font-weight: bold;">Enter your Email:</label>
-                       <input name="email" type="text" class="form-control" id="usr" placeholder="Your Email Address" required>
+                       <label for="usr" style="font-weight: bold;">New mail:</label>
+                       <input name="email" type="password" class="form-control" id="usr" placeholder="Your Email Address" required>
                    </div>
                </div>
                <div class="col-md-2"></div>
            </div>
+
+           <div class="row pt-5">
+               <div class="col-md-2"></div>
+               <div class="col-md-8">
+                   <div class="form-group">
+                       <label for="usr" style="font-weight: bold;">Confirm mail:</label>
+                       <input name="confirm_email" type="password" class="form-control" id="usr" placeholder="Your Email Address" required>
+                   </div>
+               </div>
+               <div class="col-md-2"></div>
+           </div>
+
 
 
 

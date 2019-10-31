@@ -12,6 +12,11 @@
                 <li class="nav-item mr-4">
                     <a class="nav-link" href="{{route('course.index')}}">Courses</a>
                 </li>
+                @if(!Auth::guest())
+                    <li class="nav-item pr-4">
+                        <a class="nav-link" href="/mycourses/{{\Illuminate\Support\Facades\Auth::user()->id}}">My Courses</a>
+                    </li>
+                    @endif
                 <li class="nav-item pr-4">
                     <a class="nav-link" href="{{route('hire')}}">Hire a Grad</a>
                 </li>
