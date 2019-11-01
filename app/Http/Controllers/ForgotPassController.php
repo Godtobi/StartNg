@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Mail\TestEmail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Mail;
 
@@ -87,9 +89,10 @@ class ForgotPassController extends Controller
         $user->password = Hash::make($data['password']);
         $user->update(); //or $user->save();
 
+
         Auth::login($user);
         DB::table('password_resets')->where('email', $user->email)->delete();
-        return redirect()->to('index');
+        return redirect()->route('index');
     }
 
 
