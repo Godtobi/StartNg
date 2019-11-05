@@ -58,8 +58,8 @@
                         </li>
                         <li>
                             <a class="footer-link" href="{{route('privacy')}}">Privacy Policy</a>
-                        </li>
-                    </div>
+                    </li>
+                </div>
                 </div>
             </div>
         </div>

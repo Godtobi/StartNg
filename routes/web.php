@@ -37,6 +37,9 @@ Route::resource('contact', 'ContactController');
 Route::resource('tutor', 'TutorController');
 Route::resource('tutor', 'AssignmentController');
 
+Route::post('/search', 'BaseController@getCourse')->name('course.search');
+
+
 Route::get('/about', 'BaseController@about')->name('about');
 Route::get('/graduates', 'BaseController@hire')->name('hire');
 Route::get('/contact', 'BaseController@contact')->name('contact');
@@ -44,7 +47,11 @@ Route::get('/courses/index', 'CourseController@index')->name('courses.index');
 Route::get('/privacy', 'BaseController@privacy')->name('privacy');
 Route::get('/terms', 'BaseController@terms')->name('terms');
 Route::get('/faq', 'BaseController@faq')->name('faq');
-Route::get('/find-course', 'BaseController@findcourse')->name('find-course');
+
+Route::get('/disable/course/{id}', 'CourseController@destroy')->name('course.destroy');
+
+Route::get('/find-course', 'BaseController@find_course')->name('find-course');
+
 Route::get('/curriculum', 'BaseController@curriculum')->name('curriculum');
 
 Route::get('/mycourses/{id}', 'CourseController@mycourse')->name('mycourses');
@@ -66,6 +73,7 @@ Route::get('/users/profile', 'UserController@profile')->name('user.profile');
 Route::post('/users/update', 'UserController@update')->name('user.update');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/admin-dashboard', 'DashboardController@admin')->name('admin-Dashboard');
 Route::resource('subscriptions', 'SubscriptionsController');
 
 // Tutor Route

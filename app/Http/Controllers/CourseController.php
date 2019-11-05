@@ -18,7 +18,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Courses::where('active', 1)->get();
-        return view('course.index')->with('courses', $courses);
+        return view('course.allcourses')->with('courses', $courses);
     }
 
     /**
@@ -26,13 +26,7 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        if(auth()->user()->role == 0){
-            //return to user dashboard
-        }
-        //return create course page
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -136,10 +130,10 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        $course = Course::find($id);
+        $course = Courses::find($id);
         if (empty($course)) {
-            Flash::error('Course not found');
-            return redirect(route('index'));
+
+            return redirect()->route('index');
         }
 
         $course->active = ($course->active == 0) ? 1 : 0;
@@ -147,7 +141,7 @@ class CourseController extends Controller
 
 
         $course->save();
-        return redirect(route('course.index'));
+        return back();
     }
 
     public function registerCourses($id)
@@ -167,7 +161,7 @@ class CourseController extends Controller
                 $add_course->user_id = auth()->user()->id;
                 $add_course->progress = 0;
                 $add_course->save();                
-                return route('user.course')->with('success', 'Registration was Succesful');
+                return back()->with('success', 'Registration was Succesful');
             }
         }
         else{
